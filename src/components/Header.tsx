@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -7,12 +7,20 @@ import { useTheme } from '../contexts/ThemeContext';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const lastScrollY = useRef(0);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      if (window.scrollY > lastScrollY.current) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+      }
+      lastScrollY.current = window.scrollY;
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -33,9 +41,13 @@ const Header: React.FC = () => {
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm' 
           : 'bg-transparent'
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{
+        y: 0,
+        opacity: scrollDirection === 'down' ? 1 : 0,
+        filter: scrollDirection === 'down' ? 'blur(0px)' : 'blur(2px)',
+      }}
+      transition={{ duration: 0.5 }}
     >
       <nav className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">

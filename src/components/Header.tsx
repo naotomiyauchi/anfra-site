@@ -7,20 +7,19 @@ import { useTheme } from '../contexts/ThemeContext';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const lastScrollY = useRef(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeout = useRef<number | null>(null);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      if (window.scrollY > lastScrollY.current) {
-        setScrollDirection('down');
-      } else {
-        setScrollDirection('up');
-      }
-      lastScrollY.current = window.scrollY;
+      setIsScrolling(true);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 300); // 300msスクロールが止まったら表示
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -44,10 +43,10 @@ const Header: React.FC = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{
         y: 0,
-        opacity: scrollDirection === 'down' ? 1 : 0,
-        filter: scrollDirection === 'down' ? 'blur(0px)' : 'blur(2px)',
+        opacity: isScrolling ? 0 : 1,
+        pointerEvents: isScrolling ? 'none' : 'auto',
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       <nav className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">

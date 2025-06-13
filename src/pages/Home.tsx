@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Smartphone, Database, HeadphonesIcon, ChefHat, Star, Quote, Zap, Play } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, Database, HeadphonesIcon, ChefHat, Quote, Play } from 'lucide-react';
 import KirifudaHero from '../components/KirifudaHero';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
@@ -13,21 +13,21 @@ const Home: React.FC = () => {
       icon: <Code className="h-6 w-6" />,
       title: 'Web Application',
       titleJa: 'Webアプリ事業',
-      description: '最先端技術を活用した自社アプリの開発・展開・運用',
+      description: 'こんなアプリを作りたいを開発・展開・運用',
       number: '01',
     },
     {
       icon: <Smartphone className="h-6 w-6" />,
       title: 'Website Development',
       titleJa: 'HP制作',
-      description: 'モダンで美しいWebサイトでビジネスを加速',
+      description: 'オリジナルのHPを最速で構築 / Webサイトでビジネスを加速',
       number: '02',
     },
     {
       icon: <Database className="h-6 w-6" />,
       title: 'System Development',
       titleJa: 'システム開発',
-      description: '企業ニーズに合わせたカスタムシステム設計・開発',
+      description: '面倒な事務作業を企業ニーズに合わせたカスタムシステム設計・開発',
       number: '03',
     },
     {
@@ -49,28 +49,28 @@ const Home: React.FC = () => {
   const stats = [
     { number: '100+', label: 'Projects Completed', labelJa: 'プロジェクト実績' },
     { number: '5+', label: 'Business Areas', labelJa: '事業領域' },
-    { number: '99%', label: 'Client Satisfaction', labelJa: '顧客満足度' },
-    { number: '24/7', label: 'Support System', labelJa: 'サポート体制' },
+    { number: '90%+', label: 'Client Satisfaction', labelJa: '顧客満足度' },
+    { number: '12/5', label: 'Support System', labelJa: 'サポート体制' },
   ];
 
   const testimonials = [
     {
-      name: '田中 太郎',
-      company: '株式会社テクノロジー',
-      role: 'CTO',
-      text: 'Anfraさんの技術力と提案力は素晴らしく、期待を大きく上回る成果を得ることができました。',
+      name: 'T様',
+      company: '保育事業 K保育園',
+      role: '園長',
+      text: 'Anfraさんの技術力と提案力は想像以上でした。次は自社システムの際もよろしくお願いします。',
     },
     {
-      name: '佐藤 花子',
-      company: '○○商事株式会社',
+      name: 'S様',
+      company: '印刷事業 株式会社K用紙',
       role: 'マーケティング部長',
-      text: 'プロジェクトの進行が非常にスムーズで、コミュニケーションも丁寧でした。',
+      text: 'プロジェクトの進行が非常にスムーズで、親身に要望にも対応していただきました。',
     },
     {
-      name: '山田 次郎',
-      company: '△△レストラン',
-      role: '代表取締役',
-      text: 'システム導入により業務効率が劇的に改善され、売上も向上しました。',
+      name: 'Y様',
+      company: '飲食事業 居酒屋T',
+      role: 'オーナー',
+      text: 'システム導入により業務効率が改善されました。HP制作までありがとうございました。',
     },
   ];
 
@@ -105,9 +105,7 @@ const Home: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              合同会社Anfraは、革新的なテクノロジーで
-              <br className="hidden md:block" />
-              未来のビジネスを創造します
+              革新的なテクノロジーで未来のビジネスと出会う
             </motion.p>
 
             <motion.div 
@@ -179,9 +177,9 @@ const Home: React.FC = () => {
               Our Services
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-light">
-              多様な事業領域で培った経験と最新技術を活用し、
+              最新技術を活用し、
               <br className="hidden md:block" />
-              お客様のビジネスを成功に導きます
+              お客様のビジネスに感動をお届けします
             </p>
           </motion.div>
 

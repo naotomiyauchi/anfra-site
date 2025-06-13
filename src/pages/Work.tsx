@@ -15,7 +15,7 @@ const Work: React.FC = () => {
       description: '大規模ECサイト向けの管理システム。React + Node.js + PostgreSQLで構築。リアルタイム在庫管理と高度な分析機能を実装。',
       image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
-      year: '2024',
+      year: '2025',
       featured: true,
     },
     {
@@ -26,7 +26,7 @@ const Work: React.FC = () => {
       description: '多店舗展開する飲食店向けの統合管理システム。売上分析、在庫管理、スタッフ管理を一元化。',
       image: 'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Laravel', 'MySQL', 'Docker'],
-      year: '2024',
+      year: '2025',
       featured: true,
     },
     {
@@ -37,7 +37,7 @@ const Work: React.FC = () => {
       description: '顧客対応の効率化を実現するCRMシステム。通話録音、チャット機能、レポート自動生成機能を搭載。',
       image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Angular', 'Spring Boot', 'MongoDB', 'WebRTC'],
-      year: '2023',
+      year: '2025',
       featured: false,
     },
     {
@@ -48,7 +48,7 @@ const Work: React.FC = () => {
       description: 'スマートフォン最適化を重視したコーポレートサイト。PWA対応で高速表示とオフライン機能を実現。',
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-      year: '2023',
+      year: '2025',
       featured: false,
     },
     {
@@ -92,7 +92,7 @@ const Work: React.FC = () => {
   const regularProjects = projects.filter(project => !project.featured);
 
   return (
-    <div className="relative pt-24">
+    <div className="relative pt-14">
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -126,10 +126,10 @@ const Work: React.FC = () => {
             className="mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-light mb-4 text-gray-900 dark:text-white">
-              Featured Projects
+              Recent Projects
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 font-light">
-              注目のプロジェクト
+              最近のプロジェクト
             </p>
           </motion.div>
 

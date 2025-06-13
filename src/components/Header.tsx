@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Zap } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -22,6 +22,7 @@ const Header: React.FC = () => {
     { name: 'HOME', path: '/' },
     { name: 'WORK', path: '/work' },
     { name: 'ABOUT', path: '/about' },
+    { name: 'PRICE', path: '/pricing' },
     { name: 'CONTACT', path: '/contact' },
   ];
 
@@ -41,16 +42,12 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div 
-              className="p-2 bg-gray-900 dark:bg-white rounded-lg"
+              className="p-2 dark:bg-white rounded-lg"
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.3 }}
             >
-              <Zap className="h-5 w-5 text-white dark:text-gray-900" />
+              <img src="/favicon.png" alt="Logo" className="h-20 w-20" />
             </motion.div>
-            <div>
-              <h1 className="text-xl font-medium text-gray-900 dark:text-white">Anfra</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">LLC</p>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -37,14 +37,14 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="h-5 w-5" />,
       title: 'Phone',
-      value: '03-XXXX-XXXX',
+      value: '090-8400-3970',
       description: '平日 9:00-18:00',
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       title: 'Office',
-      value: '東京都渋谷区',
-      description: '○○ビル 5F',
+      value: '福岡県福岡市博多区中島町4-9',
+      description: '中洲川端駅徒歩5分'
     },
   ];
 
@@ -233,11 +233,7 @@ const Contact: React.FC = () => {
                       <span>9:00 - 18:00</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>土曜日</span>
-                      <span>10:00 - 16:00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>日曜日・祝日</span>
+                      <span>土曜日・日曜日・祝日</span>
                       <span>休業</span>
                     </div>
                   </div>
@@ -438,15 +434,15 @@ const Contact: React.FC = () => {
               },
               {
                 question: '開発期間はどのくらいかかりますか？',
-                answer: 'プロジェクトの複雑さや規模によって異なりますが、一般的なWebサイトで2-4週間、Webアプリケーションで2-6ヶ月程度です。詳細はお打ち合わせ時にご説明いたします。',
+                answer: 'プロジェクトの複雑さや規模によって異なりますが、一般的なWebサイト（HP）で1週間以内、Webアプリケーションで2-6ヶ月程度です。詳細はお打ち合わせ時にご説明いたします。',
               },
               {
                 question: '運用・保守サポートは提供していますか？',
-                answer: 'はい、開発完了後の運用・保守サポートも提供しております。24時間365日のサポート体制で、安心してご利用いただけます。',
+                answer: 'はい、開発完了後の運用・保守サポートも提供しております。',
               },
               {
-                question: '他社で開発されたシステムの改修も可能ですか？',
-                answer: 'もちろん可能です。既存システムの分析・評価を行った上で、最適な改修プランをご提案いたします。',
+                question: 'HP制作にかかる料金はどのくらいですか？',
+                answer: 'ページ数やデザインなどにより変動しますが、１日の稼働で３万円をいただいております。お気軽にご相談ください。',
               },
             ].map((faq, index) => (
               <MinimalCard key={index} delay={index * 0.1}>

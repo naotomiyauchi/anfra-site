@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
+import favicon from '/favicon.png';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,7 +47,7 @@ const Header: React.FC = () => {
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.3 }}
             >
-              <img src="/favicon.png" alt="Logo" className="h-20 w-20" />
+              <img src={favicon} alt="Logo" className="h-20 w-20" />
             </motion.div>
           </Link>
 

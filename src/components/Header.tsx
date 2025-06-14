@@ -7,7 +7,6 @@ import { useTheme } from '../contexts/ThemeContext';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<number | null>(null);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
@@ -15,10 +14,8 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      setIsScrolling(true);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
-        setIsScrolling(false);
       }, 300); // 300msスクロールが止まったら表示
     };
     window.addEventListener('scroll', handleScroll);
@@ -34,18 +31,14 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <motion.header 
+    <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm' 
+        isScrolled
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm'
           : 'bg-transparent'
       }`}
       initial={{ y: -100, opacity: 0 }}
-      animate={{
-        y: 0,
-        opacity: isScrolling ? 0 : 1,
-        pointerEvents: isScrolling ? 'none' : 'auto',
-      }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
       <nav className="container mx-auto px-6 py-6">

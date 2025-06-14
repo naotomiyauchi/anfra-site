@@ -213,8 +213,14 @@ const Home: React.FC = () => {
       </ScrollSection>
 
       {/* Stats Section */}
-      <ScrollSection className="py-32">
+      <ScrollSection className="py-16">
         <div className="container mx-auto px-6">
+          <h2 className="text-5xl md:text-6xl font-light mb-6 text-gray-900 dark:text-white text-center">
+            Achievements
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 font-light text-center mb-10">
+            実績
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
               <motion.div
@@ -224,6 +230,7 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="text-center"
               >
+                
                 <div className="text-4xl md:text-5xl font-light mb-2 text-gray-900 dark:text-white">
                   {stat.number}
                 </div>

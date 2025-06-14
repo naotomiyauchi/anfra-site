@@ -8,6 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Pricing from './pages/Pricing';
 import { ThemeProvider } from './contexts/ThemeContext';
+import ThreeBackground from './components/ThreeBackground';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -50,8 +51,9 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden">
+        <div className="min-h-screen transition-colors duration-500 overflow-x-hidden">
           <Header />
+          <ThreeBackground />
           
           <AnimatePresence mode="wait">
             <motion.main

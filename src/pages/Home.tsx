@@ -165,7 +165,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <ScrollSection className="py-32 bg-gray-50 dark:bg-gray-900">
+      <ScrollSection className="py-32 bg-transparent">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -240,7 +240,7 @@ const Home: React.FC = () => {
       </ScrollSection>
 
       {/* Testimonials Section */}
-      <ScrollSection className="py-32 bg-gray-50 dark:bg-gray-900">
+      <ScrollSection className="py-32 bg-transparent">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

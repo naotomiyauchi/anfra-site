@@ -24,13 +24,13 @@ const MinimalCard: React.FC<MinimalCardProps> = ({
         transition: { duration: 0.3, ease: "easeOut" }
       } : {}}
       className={`
-        bg-transparent dark:bg-transparent
-        backdrop-blur-sm 
-        border border-white/10 dark:border-black/10
-        rounded-2xl 
+        bg-white/70 dark:bg-gray-900/60
+        backdrop-blur-md
+        border border-gray-300/40 dark:border-gray-600/40
+        rounded-2xl
+        shadow-xl
         transition-all duration-500
-        hover:bg-transparent dark:hover:bg-transparent
-        hover:border-white/20 dark:hover:border-black/20
+        hover:shadow-2xl hover:-translate-y-2
         ${className}
       `}
     >

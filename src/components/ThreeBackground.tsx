@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Float, Sphere } from '@react-three/drei';
+import { Points, PointMaterial, Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -21,7 +21,7 @@ const AnimatedSphere: React.FC<{ position: [number, number, number] }> = ({ posi
       <mesh ref={meshRef} position={position}>
         <icosahedronGeometry args={[0.3, 1]} />
         <meshStandardMaterial
-          color={theme === 'dark' ? '#3b82f6' : '#1d4ed8'}
+          color={theme === 'dark' ? '#1d4ed8' : '#3b82f6'}
           wireframe
           transparent
           opacity={0.6}
@@ -68,10 +68,13 @@ const ParticleField: React.FC = () => {
 
 const GeometricShapes: React.FC = () => {
   const shapes = useMemo(() => [
-    { position: [-4, 2, -2] as [number, number, number] },
-    { position: [4, -1, -3] as [number, number, number] },
-    { position: [-2, -3, -1] as [number, number, number] },
-    { position: [3, 3, -4] as [number, number, number] },
+    { position: [-4, 8, -2] as [number, number, number] },
+    { position: [4, 6, -3] as [number, number, number] },
+    { position: [-2, 0, -1] as [number, number, number] },
+    { position: [3, -6, -4] as [number, number, number] },
+    { position: [0, -10, -2] as [number, number, number] },
+    { position: [6, -12, -3] as [number, number, number] },
+    { position: [-6, 12, -3] as [number, number, number] },
   ], []);
 
   return (
@@ -90,7 +93,7 @@ const ThreeBackground: React.FC = () => {
     <div className="fixed inset-0 -z-10">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        style={{ background: 'transparent' }}
+        style={{ background: theme === 'dark' ? '#18181b' : '#f8fafc' }}
       >
         <ambientLight intensity={theme === 'dark' ? 0.3 : 0.5} />
         <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 0.8 : 1} />

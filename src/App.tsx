@@ -8,7 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Pricing from './pages/Pricing';
 import { ThemeProvider } from './contexts/ThemeContext';
-import ThreeBackground from './components/ThreeBackground';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,31 +49,33 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="min-h-screen transition-colors duration-500 overflow-x-hidden">
-          <Header />
-          <ThreeBackground />
-          
-          <AnimatePresence mode="wait">
-            <motion.main
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/work" element={<Work />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/pricing" element={<Pricing />} />
-              </Routes>
-            </motion.main>
-          </AnimatePresence>
-        </div>
-      </Router>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <Router>
+          <div className="min-h-screen transition-colors duration-500 overflow-x-hidden">
+            <Header />
+            {/* <ThreeBackground /> */}
+            
+            <AnimatePresence mode="wait">
+              <motion.main
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/work" element={<Work />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                </Routes>
+              </motion.main>
+            </AnimatePresence>
+          </div>
+        </Router>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

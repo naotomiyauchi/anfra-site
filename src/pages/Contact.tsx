@@ -77,26 +77,40 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!validateForm()) {
       return;
     }
-
     setIsSubmitting(true);
-    
+    setErrors({});
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setIsSubmitted(true);
-      setFormData({
-        company: '',
-        name: '',
-        email: '',
-        phone: '',
-        category: '',
-        message: '',
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          company: formData.company,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          category: formData.category,
+          message: formData.message,
+        }),
       });
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          company: '',
+          name: '',
+          email: '',
+          phone: '',
+          category: '',
+          message: '',
+        });
+      } else {
+        const data = await res.json();
+        setErrors({ message: data.error || '送信に失敗しました' });
+      }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      setErrors({ message: '送信に失敗しました' });
     } finally {
       setIsSubmitting(false);
     }

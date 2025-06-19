@@ -29,6 +29,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
     res.status(200).json({ ok: true });
   } catch (err) {
-    res.status(500).json({ error: 'メール送信に失敗しました' });
+    console.error(err);
+    res.status(500).json({ error: err?.toString() || 'メール送信に失敗しました' });
   }
 } 

@@ -89,7 +89,7 @@ const Home: React.FC = () => {
       <div className="relative">
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          {/* <KirifudaHero /> */}
+          <KirifudaHero />
           
           <div className="container mx-auto px-6 text-center relative z-20">
             <motion.div

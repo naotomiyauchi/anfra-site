@@ -11,9 +11,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Missing email or message' });
   }
 
-  // nodemailerの設定（Gmail例。環境変数を使うこと）
+  // nodemailerの設定（お名前.com独自ドメイン用）
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'mail1009.onamae.ne.jp',
+    port: 465,
+    secure: true, // SSL接続あり
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,

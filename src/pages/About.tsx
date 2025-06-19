@@ -33,35 +33,35 @@ const About: React.FC = () => {
 
   const timeline = [
     {
-      year: '2020',
+      year: '2025',
       title: '会社設立',
       titleEn: 'Company Founded',
       description: '合同会社Anfraを設立。IT事業からスタート。',
     },
-    {
-      year: '2021',
-      title: '事業拡大',
-      titleEn: 'Business Expansion',
-      description: 'Webアプリケーション開発とHP制作事業を本格化。',
-    },
-    {
-      year: '2022',
-      title: '飲食業参入',
-      titleEn: 'Restaurant Business',
-      description: '飲食業に参入し、多角的事業展開を開始。',
-    },
-    {
-      year: '2023',
-      title: 'システム開発強化',
-      titleEn: 'System Development',
-      description: 'コールセンターシステム等、大規模システム開発に注力。',
-    },
-    {
-      year: '2024',
-      title: '更なる飛躍',
-      titleEn: 'Further Growth',
-      description: '最先端技術の導入と事業領域の拡大を推進。',
-    },
+    //{
+    //  year: '2021',
+    //  title: '事業拡大',
+    //  titleEn: 'Business Expansion',
+    //  description: 'Webアプリケーション開発とHP制作事業を本格化。',
+    //},
+    //{
+    //  year: '2022',
+    //  title: '飲食業参入',
+    //  titleEn: 'Restaurant Business',
+    //  description: '飲食業に参入し、多角的事業展開を開始。',
+    //},
+    //{
+    //  year: '2023',
+    //  title: 'システム開発強化',
+    //  titleEn: 'System Development',
+    //  description: 'コールセンターシステム等、大規模システム開発に注力。',
+    //},
+    //{
+    //  year: '2024',
+    //  title: '更なる飛躍',
+    //  titleEn: 'Further Growth',
+    //  description: '最先端技術の導入と事業領域の拡大を推進。',
+    //},
   ];
 
   const stats = [
@@ -310,13 +310,13 @@ const About: React.FC = () => {
                         <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
                           Established
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400">2020年</p>
+                        <p className="text-gray-600 dark:text-gray-400">2025年7月</p>
                       </div>
                       <div>
                         <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
                           Representative
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400">代表社員</p>
+                        <p className="text-gray-600 dark:text-gray-400">宮内直人</p>
                       </div>
                     </motion.div>
 

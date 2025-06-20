@@ -338,12 +338,12 @@ const About: React.FC = () => {
                           <li>• 飲食業</li>
                         </ul>
                       </div>
-                      <div>
-                        <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
-                          Team Size
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400">10名（2024年現在）</p>
-                      </div>
+                      //<div>
+                      //  <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
+                      //    Team Size
+                      //  </h3>
+                      //  <p className="text-gray-600 dark:text-gray-400">10名（2024年現在）</p>
+                      //</div>
                     </motion.div>
                   </div>
                 </div>

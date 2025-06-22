@@ -19,7 +19,21 @@ function App() {
       setLoading(false);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    // モバイルでのスクロール最適化
+    const optimizeMobileScroll = () => {
+      if (window.innerWidth <= 768) {
+        document.documentElement.style.setProperty('-webkit-overflow-scrolling', 'touch');
+        document.body.style.setProperty('-webkit-overflow-scrolling', 'touch');
+      }
+    };
+
+    optimizeMobileScroll();
+    window.addEventListener('resize', optimizeMobileScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', optimizeMobileScroll);
+    };
   }, []);
 
   if (loading) {
@@ -53,7 +67,7 @@ function App() {
     <HelmetProvider>
       <ThemeProvider>
         <Router>
-          <div className="min-h-screen transition-colors duration-500 overflow-x-hidden">
+          <div className="min-h-screen transition-colors duration-500 overflow-x-hidden" style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
             <Header />
             <ThreeBackground />
             

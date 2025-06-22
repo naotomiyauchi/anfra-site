@@ -9,12 +9,25 @@ interface ScrollSectionProps {
 
 const ScrollSection: React.FC<ScrollSectionProps> = ({ children, className = '', id }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  // モバイルではアニメーションを軽量化
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [50, -50] : [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
@@ -22,7 +35,10 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, className = '',
       ref={ref}
       id={id}
       className={`relative ${className}`}
-      style={{ y, opacity }}
+      style={{ 
+        y: isMobile ? 0 : y, // モバイルではY軸アニメーションを無効化
+        opacity 
+      }}
     >
       {children}
     </motion.div>

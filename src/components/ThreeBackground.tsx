@@ -88,18 +88,38 @@ const GeometricShapes: React.FC = () => {
 
 const ThreeBackground: React.FC = () => {
   const { theme } = useTheme();
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
         style={{ background: theme === 'dark' ? '#18181b' : '#f8fafc' }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        performance={{ min: isMobile ? 0.3 : 0.5 }}
+        gl={{ 
+          antialias: !isMobile,
+          powerPreference: "high-performance",
+          alpha: false,
+          stencil: false,
+          depth: true
+        }}
       >
         <ambientLight intensity={theme === 'dark' ? 0.3 : 0.5} />
         <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 0.8 : 1} />
         <pointLight position={[-10, -10, -10]} intensity={theme === 'dark' ? 0.3 : 0.5} color="#14b8a6" />
         
-        <ParticleField />
+        {!isMobile && <ParticleField />}
         <GeometricShapes />
       </Canvas>
     </div>

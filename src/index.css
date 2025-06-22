@@ -13,6 +13,8 @@
 html {
   scroll-behavior: smooth;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 body {
@@ -21,6 +23,43 @@ body {
   overflow-x: hidden;
   font-weight: 300;
   letter-spacing: -0.01em;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+/* モバイルデバイスでのスクロール最適化 */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: none;
+  }
+  
+  /* スクロール中のパフォーマンス向上 */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* スクロール中のアニメーション軽量化 */
+  .scroll-optimized {
+    will-change: auto;
+    transform: translateZ(0);
+  }
+
+  /* タッチデバイスでのスクロール最適化 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* テキスト選択は許可 */
+  p, h1, h2, h3, h4, h5, h6, span, div {
+    -webkit-user-select: text;
+    user-select: text;
+  }
 }
 
 /* Smooth scrolling for better UX */

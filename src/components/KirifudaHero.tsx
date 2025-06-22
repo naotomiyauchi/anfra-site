@@ -106,11 +106,20 @@ const CameraController: React.FC<{ scrollY: number }> = ({ scrollY }) => {
 const KirifudaHero: React.FC = () => {
   const { theme } = useTheme();
   const [scrollY, setScrollY] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const geometries = useMemo(() => [
@@ -125,19 +134,26 @@ const KirifudaHero: React.FC = () => {
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
         style={{ background: 'transparent' }}
-        dpr={[1, 2]}
-        performance={{ min: 0.5 }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        performance={{ min: isMobile ? 0.3 : 0.5 }}
+        gl={{ 
+          antialias: !isMobile,
+          powerPreference: "high-performance",
+          alpha: false,
+          stencil: false,
+          depth: true
+        }}
       >
         <ambientLight intensity={theme === 'dark' ? 0.2 : 0.4} />
         <directionalLight 
           position={[5, 5, 5]} 
           intensity={theme === 'dark' ? 0.3 : 0.6}
-          castShadow
+          castShadow={!isMobile}
         />
         <pointLight position={[-5, -5, 5]} intensity={0.2} color="#3b82f6" />
         
         <CameraController scrollY={scrollY} />
-        <ParticleField />
+        {!isMobile && <ParticleField />}
         
         {geometries.map((geo, index) => (
           <FloatingGeometry 

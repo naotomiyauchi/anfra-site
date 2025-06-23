@@ -35,8 +35,8 @@ body {
     overscroll-behavior: none;
   }
   
-  /* スクロール中のパフォーマンス向上 */
-  * {
+  /* スクロール中のパフォーマンス向上 - 必要な要素に .gpu-accelerated を適用 */
+  .gpu-accelerated {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }

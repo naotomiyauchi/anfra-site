@@ -87,7 +87,7 @@ const Home: React.FC = () => {
       </Helmet>
       <div className="relative">
         {/* Hero Section */}
-        <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-transparent">
+        <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-transparent pt-36 md:pt-0">
           
           <div className="container mx-auto px-6 text-center relative z-20">
             <motion.div

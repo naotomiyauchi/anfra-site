@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Award, TrendingUp, Heart, Zap, Star, ArrowRight } from 'lucide-react';
+import { Users, Zap, Award, ArrowRight } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';
@@ -16,7 +16,7 @@ const About: React.FC = () => {
       number: '01',
     },
     {
-      icon: <Heart className="h-6 w-6" />,
+      icon: <Award className="h-6 w-6" />,
       title: 'Quality',
       titleJa: '品質重視',
       description: '妥協のない品質管理と継続的な改善により、お客様に最高の価値を届けます。',
@@ -236,36 +236,29 @@ const About: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                    className={`relative flex items-center ${
-                      index % 2 === 0 ? 'justify-start' : 'justify-end'
-                    }`}
+                    className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
                   >
                     {/* Timeline dot */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 dark:bg-white rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
-                    
                     {/* Content */}
-                    <MinimalCard 
-                      className={`max-w-md ${
-                        index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'
-                      }`} 
-                      style={{width: 'calc(50% - 2rem)'}}
-                      delay={0}
-                    >
-                      <div className="p-6">
-                        <div className="text-2xl font-light text-gray-900 dark:text-white mb-2">
-                          {item.year}
+                    <div className={`max-w-md ${index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'}`} style={{width: 'calc(50% - 2rem)'}}>
+                      <MinimalCard delay={0}>
+                        <div className="p-6">
+                          <div className="text-2xl font-light text-gray-900 mb-2">
+                            {item.year}
+                          </div>
+                          <h3 className="text-xl font-medium mb-1 text-gray-900">
+                            {item.title}
+                          </h3>
+                          <h4 className="text-sm text-gray-500 mb-3">
+                            {item.titleEn}
+                          </h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {item.description}
+                          </p>
                         </div>
-                        <h3 className="text-xl font-medium mb-1 text-gray-900 dark:text-white">
-                          {item.title}
-                        </h3>
-                        <h4 className="text-sm text-gray-500 dark:text-gray-500 mb-3">
-                          {item.titleEn}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </MinimalCard>
+                      </MinimalCard>
+                    </div>
                   </motion.div>
                 ))}
               </div>

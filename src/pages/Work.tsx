@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code, Smartphone, Database, Globe, ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, ExternalLink, Code, Database, Globe, Play } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';

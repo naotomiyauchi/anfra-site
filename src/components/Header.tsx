@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const scrollTimeout = useRef<number | null>(null);
-  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -33,8 +31,8 @@ const Header: React.FC = () => {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 shadow-sm'
+        isScrolled || isMenuOpen
+          ? 'bg-white/95 shadow-sm'
           : 'bg-transparent'
       }`}
       initial={{ y: -100, opacity: 0 }}
@@ -46,7 +44,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div 
-              className="p-2 dark:bg-white rounded-lg"
+              className="p-2 rounded-lg"
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.3 }}
             >
@@ -62,14 +60,14 @@ const Header: React.FC = () => {
                 to={item.path}
                 className={`relative text-sm font-medium transition-colors duration-300 ${
                   location.pathname === item.path
-                    ? 'text-gray-900 dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 {item.name}
                 {location.pathname === item.path && (
                   <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-gray-900 dark:bg-white"
+                    className="absolute -bottom-1 left-0 right-0 h-px bg-gray-900"
                     layoutId="activeTab"
                     transition={{ duration: 0.3 }}
                   />
@@ -78,34 +76,19 @@ const Header: React.FC = () => {
             ))}
           </div>
 
-          {/* Theme Toggle & Mobile Menu */}
+          {/* Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? (
-                <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              ) : (
-                <Sun className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              )}
-            </motion.button>
-
-            {/* Mobile Menu Button */}
-            <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                <X className="h-6 w-6 text-gray-600" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                <Menu className="h-6 w-6 text-gray-600" />
               )}
             </motion.button>
           </div>
@@ -129,8 +112,8 @@ const Header: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={`block text-lg font-medium transition-colors duration-300 ${
                   location.pathname === item.path
-                    ? 'text-gray-900 dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400'
+                    ? 'text-gray-900'
+                    : 'text-gray-600'
                 }`}
               >
                 {item.name}

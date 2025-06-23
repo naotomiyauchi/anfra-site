@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
 
 const FloatingElement: React.FC<{ 
   delay: number; 
@@ -76,7 +75,6 @@ const Particle: React.FC<{
 };
 
 const ModernBackground: React.FC = () => {
-  const { theme } = useTheme();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, color: string, size: number}>>([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -101,9 +99,7 @@ const ModernBackground: React.FC = () => {
         id: Date.now(),
         x: Math.random() * 100,
         y: Math.random() * 100,
-        color: theme === 'dark' 
-          ? ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981'][Math.floor(Math.random() * 4)]
-          : ['#60a5fa', '#a78bfa', '#22d3ee', '#34d399'][Math.floor(Math.random() * 4)],
+        color: ['#60a5fa', '#a78bfa', '#22d3ee', '#34d399'][Math.floor(Math.random() * 4)],
         size: Math.random() * 3 + 1,
       };
       
@@ -130,9 +126,7 @@ const ModernBackground: React.FC = () => {
         clearInterval(particleInterval);
       }
     };
-  }, [theme, isMobile]);
-
-  const isDark = theme === 'dark';
+  }, [isMobile]);
   
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
@@ -140,9 +134,7 @@ const ModernBackground: React.FC = () => {
       <div 
         className="absolute inset-0 transition-all duration-1000"
         style={{
-          background: isDark 
-            ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%)'
-            : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%)',
+          background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
         }}
       />
 
@@ -152,8 +144,8 @@ const ModernBackground: React.FC = () => {
           className="absolute inset-0 opacity-20 transition-all duration-1000"
           style={{
             background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-              ${isDark ? '#3b82f6' : '#60a5fa'} 0%, 
-              ${isDark ? '#1d4ed8' : '#3b82f6'} 25%, 
+              #60a5fa 0%, 
+              #3b82f6 25%, 
               transparent 50%)`,
           }}
         />
@@ -162,24 +154,24 @@ const ModernBackground: React.FC = () => {
       {/* フローティンググラデーションオーブ */}
       <GradientOrb 
         size="w-96 h-96" 
-        color1={isDark ? "#3b82f6" : "#60a5fa"} 
-        color2={isDark ? "#1d4ed8" : "#3b82f6"} 
+        color1="#60a5fa" 
+        color2="#3b82f6" 
         position="-top-48 -left-48" 
         blur="blur-2xl"
       />
       
       <GradientOrb 
         size="w-80 h-80" 
-        color1={isDark ? "#8b5cf6" : "#a78bfa"} 
-        color2={isDark ? "#7c3aed" : "#8b5cf6"} 
+        color1="#a78bfa" 
+        color2="#8b5cf6" 
         position="-bottom-40 -right-40" 
         blur="blur-2xl"
       />
       
       <GradientOrb 
         size="w-64 h-64" 
-        color1={isDark ? "#06b6d4" : "#22d3ee"} 
-        color2={isDark ? "#0891b2" : "#06b6d4"} 
+        color1="#22d3ee" 
+        color2="#06b6d4" 
         position="top-1/2 left-1/4" 
         blur="blur-xl"
       />
@@ -211,15 +203,9 @@ const ModernBackground: React.FC = () => {
       <motion.div
         className="absolute top-1/4 right-1/4 w-32 h-32 rounded-2xl backdrop-blur-lg"
         style={{
-          background: isDark 
-            ? 'rgba(255, 255, 255, 0.05)' 
-            : 'rgba(255, 255, 255, 0.3)',
-          border: isDark 
-            ? '1px solid rgba(255, 255, 255, 0.1)' 
-            : '1px solid rgba(255, 255, 255, 0.5)',
-          boxShadow: isDark
-            ? '0 8px 32px rgba(0, 0, 0, 0.3)'
-            : '0 8px 32px rgba(0, 0, 0, 0.1)',
+          background: 'rgba(255, 255, 255, 0.3)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
         }}
         animate={{
           rotate: [0, 360],
@@ -234,15 +220,9 @@ const ModernBackground: React.FC = () => {
       <motion.div
         className="absolute bottom-1/4 left-1/4 w-24 h-24 rounded-xl backdrop-blur-lg"
         style={{
-          background: isDark 
-            ? 'rgba(255, 255, 255, 0.03)' 
-            : 'rgba(255, 255, 255, 0.2)',
-          border: isDark 
-            ? '1px solid rgba(255, 255, 255, 0.08)' 
-            : '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: isDark
-            ? '0 4px 16px rgba(0, 0, 0, 0.2)'
-            : '0 4px 16px rgba(0, 0, 0, 0.05)',
+          background: 'rgba(255, 255, 255, 0.2)',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.05)',
         }}
         animate={{
           rotate: [0, -360],
@@ -259,12 +239,8 @@ const ModernBackground: React.FC = () => {
         <motion.div
           className="absolute top-1/3 left-1/6 w-20 h-20 rounded-2xl"
           style={{
-            background: isDark 
-              ? 'linear-gradient(145deg, #1e293b, #334155)'
-              : 'linear-gradient(145deg, #ffffff, #e2e8f0)',
-            boxShadow: isDark
-              ? '20px 20px 60px #0f172a, -20px -20px 60px #475569'
-              : '20px 20px 60px #cbd5e1, -20px -20px 60px #ffffff',
+            background: 'linear-gradient(145deg, #ffffff, #e2e8f0)',
+            boxShadow: '20px 20px 60px #cbd5e1, -20px -20px 60px #ffffff',
           }}
           animate={{
             scale: [1, 1.05, 1],
@@ -293,8 +269,8 @@ const ModernBackground: React.FC = () => {
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
-            linear-gradient(${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px),
-            linear-gradient(90deg, ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
@@ -328,8 +304,8 @@ const ModernBackground: React.FC = () => {
           <div 
             className="w-4 h-4 rounded-full opacity-30"
             style={{
-              background: isDark ? '#3b82f6' : '#60a5fa',
-              boxShadow: `0 0 20px ${isDark ? '#3b82f6' : '#60a5fa'}`,
+              background: '#60a5fa',
+              boxShadow: '0 0 20px #60a5fa',
             }}
           />
         </motion.div>

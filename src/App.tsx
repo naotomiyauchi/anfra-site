@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 import Pricing from './pages/Pricing';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { HelmetProvider } from 'react-helmet-async';
-import ThreeBackground from './components/ThreeBackground';
+import ModernBackground from './components/ModernBackground';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -69,7 +69,7 @@ function App() {
         <Router>
           <div className="min-h-screen transition-colors duration-500 overflow-x-hidden" style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
             <Header />
-            <ThreeBackground />
+            <ModernBackground />
             
             <AnimatePresence mode="wait">
               <motion.main

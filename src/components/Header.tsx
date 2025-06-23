@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => {
+      scrollTimeout.current = window.setTimeout(() => {
       }, 300); // 300msスクロールが止まったら表示
     };
     window.addEventListener('scroll', handleScroll);
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm'
+          ? 'bg-white/80 dark:bg-gray-900/80 shadow-sm'
           : 'bg-transparent'
       }`}
       initial={{ y: -100, opacity: 0 }}

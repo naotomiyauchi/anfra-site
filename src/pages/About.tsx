@@ -236,12 +236,12 @@ const About: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                    className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+                    className={`relative flex flex-col md:flex-row items-center md:items-stretch ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}
                   >
                     {/* Timeline dot */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 dark:bg-white rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
                     {/* Content */}
-                    <div className={`max-w-md ${index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'}`} style={{width: 'calc(50% - 2rem)'}}>
+                    <div className={`w-full max-w-md md:${index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'}`} style={{width: '100%'}}>
                       <MinimalCard delay={0}>
                         <div className="p-6">
                           <div className="text-2xl font-light text-gray-900 mb-2">
@@ -331,12 +331,6 @@ const About: React.FC = () => {
                           <li>• 飲食業</li>
                         </ul>
                       </div>
-                      //<div>
-                      //  <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
-                      //    Team Size
-                      //  </h3>
-                      //  <p className="text-gray-600 dark:text-gray-400">10名（2024年現在）</p>
-                      //</div>
                     </motion.div>
                   </div>
                 </div>
@@ -361,11 +355,11 @@ const About: React.FC = () => {
               <MinimalCard>
                 <div className="p-12">
                   <blockquote className="text-xl leading-relaxed mb-8 text-gray-600 font-light italic">
-                    「技術は手段であり、目的は人々の生活をより豊かにすることです。
-                    私たちAnfraは、最先端の技術を駆使しながらも、常に人間らしい温かさを大切にし、
-                    お客様との信頼関係を築いてまいります。
-                    多様な事業領域での経験を活かし、お客様の成功が私たちの成功であるという信念のもと、
-                    これからも挑戦し続けてまいります。」
+                  私たちAnfraは、最先端の技術を活用しながらも、人間らしさや温もりを何より大切にしています。
+                  お客様との信頼関係を土台に、「話を丁寧に聞くこと」「本質的なニーズを見抜くこと」「要望を確実にカタチにすること」を徹底し、共に理想を実現するパートナーであり続けたいと考えています。
+                  スタートアップならではのスピード感と柔軟性を武器に、小さな声も逃さず拾い上げ、日々進化し続けています。
+                  お客様の成功こそが、私たちの誇りであり成長の源です。
+                  Anfraはこれからも、挑戦を恐れず、誠実に、真摯に、未来を共につくっていきます。
                   </blockquote>
                   <div className="text-lg font-medium text-gray-900 dark:text-white">
                     合同会社Anfra 代表社員

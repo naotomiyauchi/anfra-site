@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink, Code, Database, Globe, Play } from 'lucide-react';
+import { ArrowRight, Code, Database, Globe, Play } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';
@@ -10,12 +10,12 @@ const Work: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Platform CMS',
-      category: 'Web Application',
+      title: 'Generation AI - app',
+      category: '開発中',
       categoryJa: 'Webアプリケーション',
-      description: '大規模ECサイト向けの管理システム。React + Node.js + PostgreSQLで構築。リアルタイム在庫管理と高度な分析機能を実装。',
+      description: 'AIを活用した絵本の自動生成アプリ。親御さんが子供に教えたいことを絵本してくれる。',
       image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
+      technologies: ['Next.js (TypeScript)', 'Tailwind CSS', 'React Context', 'Python', 'AWS'],
       year: '2025',
       featured: true,
     },
@@ -28,7 +28,7 @@ const Work: React.FC = () => {
       image: 'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Laravel', 'MySQL', 'Docker'],
       year: '2025',
-      featured: true,
+      featured: false,
     },
     {
       id: 3,
@@ -78,10 +78,16 @@ const Work: React.FC = () => {
 
   const techStack = [
     { name: 'React', category: 'Frontend', icon: <Code className="h-5 w-5" /> },
+    { name: 'Next.js (TypeScript)', category: 'Frontend', icon: <Code className="h-5 w-5" /> },
+    { name: 'Tailwind CSS', category: 'Frontend', icon: <Code className="h-5 w-5" /> },
+    { name: 'shadcn/ui', category: 'UI Components', icon: <Code className="h-5 w-5" /> },
+    { name: 'Zustand', category: 'State Management', icon: <Code className="h-5 w-5" /> },
+    { name: 'React Context', category: 'State Management', icon: <Code className="h-5 w-5" /> },
     { name: 'Vue.js', category: 'Frontend', icon: <Code className="h-5 w-5" /> },
     { name: 'Angular', category: 'Frontend', icon: <Code className="h-5 w-5" /> },
     { name: 'Node.js', category: 'Backend', icon: <Database className="h-5 w-5" /> },
     { name: 'Python', category: 'Backend', icon: <Database className="h-5 w-5" /> },
+    { name: 'FastAPI', category: 'Backend', icon: <Database className="h-5 w-5" /> },
     { name: 'Laravel', category: 'Backend', icon: <Database className="h-5 w-5" /> },
     { name: 'PostgreSQL', category: 'Database', icon: <Database className="h-5 w-5" /> },
     { name: 'MongoDB', category: 'Database', icon: <Database className="h-5 w-5" /> },
@@ -90,7 +96,7 @@ const Work: React.FC = () => {
   ];
 
   const featuredProjects = projects.filter(project => project.featured);
-  const regularProjects = projects.filter(project => !project.featured);
+  // const regularProjects = projects.filter(project => !project.featured);
 
   return (
     <>
@@ -127,7 +133,90 @@ const Work: React.FC = () => {
           </div>
         </section>
 
-        {/* Featured Projects */}
+        {/* Process Section（Development Process）を先に表示 */}
+        <ScrollSection className="py-20 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 dark:text-white">
+                Development Process
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 font-light">
+                プロジェクト成功のための体系的なアプローチ
+              </p>
+            </motion.div>
+
+            <div className="relative max-w-4xl mx-auto">
+              {/* Timeline line */}
+              <div className="absolute left-1/2 transform -translate-x-px h-full w-px bg-gray-200 dark:bg-gray-700"></div>
+
+              <div className="space-y-12">
+                {[
+                  { 
+                    step: '01', 
+                    title: 'Discovery', 
+                    titleJa: '要件定義',
+                    description: 'お客様との対話を何より大切にし、ビジョンや課題、想いを丁寧にヒアリング。言葉にしづらいご要望まで引き出し、共にプロジェクトのゴールを明確にします。' 
+                  },
+                  { 
+                    step: '02', 
+                    title: 'Design', 
+                    titleJa: '設計・企画',
+                    description: 'ご相談を重ねながら、理想の形を一緒に描いていきます。UI/UX(見た目)から技術設計まで、ユーザー目線と技術のバランスを両立した最適な提案を行います。' 
+                  },
+                  { 
+                    step: '03', 
+                    title: 'Development', 
+                    titleJa: '開発・実装',
+                    description: '進行中もこまめな確認と柔軟な対応を心がけ、変化に強いアジャイル開発を実施。高品質かつスピーディに、お客様の期待を超えるものづくりを目指します。' 
+                  },
+                  { 
+                    step: '04', 
+                    title: 'Deployment', 
+                    titleJa: 'テスト・デプロイ',
+                    description: '十分なテストを実施し、完成後も安心して運用できるよう、丁寧なテストと万全なデプロイをサポート。納品して終わりではなく、その先の活用までしっかり寄り添います。' 
+                  },
+                ].map((process, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className={`relative flex flex-col md:flex-row items-center md:items-stretch ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}
+                  >
+                    {/* Timeline dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 dark:bg-white rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
+                    {/* Content */}
+                    <div className={`w-full max-w-md md:${index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'}`} style={{width: '100%'}}>
+                      <MinimalCard delay={0}>
+                        <div className="p-6">
+                          <div className="text-2xl font-light text-gray-900 mb-2">
+                            {process.step}
+                          </div>
+                          <h3 className="text-xl font-medium mb-1 text-gray-900">
+                            {process.title}
+                          </h3>
+                          <h4 className="text-sm text-gray-500 mb-3">
+                            {process.titleJa}
+                          </h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {process.description}
+                          </p>
+                        </div>
+                      </MinimalCard>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </ScrollSection>
+
+        {/* Featured Projects（Recent Projects）を後ろに移動 */}
         <ScrollSection className="py-20">
           <div className="container mx-auto px-6">
             <motion.div
@@ -205,6 +294,7 @@ const Work: React.FC = () => {
         </ScrollSection>
 
         {/* All Projects */}
+        {/*
         <ScrollSection className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
@@ -279,6 +369,7 @@ const Work: React.FC = () => {
             </div>
           </div>
         </ScrollSection>
+        */}
 
         {/* Technology Stack */}
         <ScrollSection className="py-20">
@@ -317,70 +408,7 @@ const Work: React.FC = () => {
           </div>
         </ScrollSection>
 
-        {/* Process Section */}
-        <ScrollSection className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 dark:text-white">
-                Development Process
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 font-light">
-                プロジェクト成功のための体系的なアプローチ
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {[
-                { 
-                  step: '01', 
-                  title: 'Discovery', 
-                  titleJa: '要件定義',
-                  description: 'お客様のニーズを詳細にヒアリングし、プロジェクトの目標と要件を明確化' 
-                },
-                { 
-                  step: '02', 
-                  title: 'Design', 
-                  titleJa: '設計・企画',
-                  description: 'システム設計とUI/UX設計を行い、技術的なアーキテクチャを決定' 
-                },
-                { 
-                  step: '03', 
-                  title: 'Development', 
-                  titleJa: '開発・実装',
-                  description: 'アジャイル開発手法を採用し、品質の高いコードで迅速に実装' 
-                },
-                { 
-                  step: '04', 
-                  title: 'Deployment', 
-                  titleJa: 'テスト・デプロイ',
-                  description: '十分なテストを実施し、本番環境への安全なデプロイと運用開始をサポート' 
-                },
-              ].map((process, index) => (
-                <MinimalCard key={index} delay={index * 0.1}>
-                  <div className="p-8 text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full text-lg font-medium mb-6">
-                      {process.step}
-                    </div>
-                    <h3 className="text-xl font-medium mb-2 text-gray-900 dark:text-white">
-                      {process.title}
-                    </h3>
-                    <h4 className="text-sm text-gray-500 dark:text-gray-500 mb-4">
-                      {process.titleJa}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                      {process.description}
-                    </p>
-                  </div>
-                </MinimalCard>
-              ))}
-            </div>
-          </div>
-        </ScrollSection>
+        {/* 詳細スキル・構成リストはtechStackカードに統合済み */}
 
         {/* CTA Section */}
         <ScrollSection className="py-20">

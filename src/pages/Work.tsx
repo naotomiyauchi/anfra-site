@@ -193,7 +193,7 @@ const Work: React.FC = () => {
                         className="flex items-center space-x-2 text-gray-900 dark:text-white font-medium group-hover:translate-x-2 transition-transform duration-300"
                         whileHover={{ x: 8 }}
                       >
-                        <span>View Project</span>
+                        <span className="notranslate" translate="no">View Project</span>
                         <ArrowRight className="h-4 w-4" />
                       </motion.button>
                     </div>
@@ -269,7 +269,7 @@ const Work: React.FC = () => {
                         className="flex items-center space-x-2 text-gray-900 dark:text-white text-sm font-medium"
                         whileHover={{ x: 4 }}
                       >
-                        <span>View Details</span>
+                        <span className="notranslate" translate="no">View Details</span>
                         <ExternalLink className="h-3 w-3" />
                       </motion.button>
                     </div>
@@ -289,7 +289,7 @@ const Work: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 notranslate" translate="no">
                 Technology Stack
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 font-light">
@@ -304,10 +304,10 @@ const Work: React.FC = () => {
                     <div className="flex justify-center mb-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                       {tech.icon}
                     </div>
-                    <h3 className="font-medium text-gray-900 dark:text-white mb-1 text-sm">
+                    <h3 className="font-medium text-gray-900 mb-1 text-sm notranslate" translate="no">
                       {tech.name}
                     </h3>
-                    <p className="text-xs text-gray-500 dark:text-gray-500">
+                    <p className="text-xs text-gray-500 notranslate" translate="no">
                       {tech.category}
                     </p>
                   </div>

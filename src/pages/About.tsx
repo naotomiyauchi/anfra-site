@@ -115,7 +115,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
               >
-                <h2 className="text-4xl md:text-5xl font-light mb-8 text-gray-900 dark:text-white">
+                <h2 className="text-4xl md:text-5xl font-light mb-8 text-gray-900 notranslate" translate="no">
                   Our Mission
                 </h2>
                 <div className="space-y-6">
@@ -145,10 +145,10 @@ const About: React.FC = () => {
                         <div className="text-3xl font-light mb-2 text-gray-900 dark:text-white">
                           {stat.number}
                         </div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                        <div className="text-sm text-gray-600 mb-1 notranslate" translate="no">
                           {stat.label}
                         </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-500">
+                        <div className="text-xs text-gray-500">
                           {stat.labelJa}
                         </div>
                       </div>
@@ -250,7 +250,7 @@ const About: React.FC = () => {
                           <h3 className="text-xl font-medium mb-1 text-gray-900">
                             {item.title}
                           </h3>
-                          <h4 className="text-sm text-gray-500 mb-3">
+                          <h4 className="text-sm text-gray-500 mb-3 notranslate" translate="no">
                             {item.titleEn}
                           </h4>
                           <p className="text-gray-600 text-sm leading-relaxed">
@@ -354,13 +354,13 @@ const About: React.FC = () => {
               transition={{ duration: 1 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h2 className="text-4xl md:text-5xl font-light mb-12 text-gray-900 dark:text-white">
+              <h2 className="text-4xl md:text-5xl font-light mb-12 text-gray-900 notranslate" translate="no">
                 CEO Message
               </h2>
               
               <MinimalCard>
                 <div className="p-12">
-                  <blockquote className="text-xl leading-relaxed mb-8 text-gray-600 dark:text-gray-400 font-light italic">
+                  <blockquote className="text-xl leading-relaxed mb-8 text-gray-600 font-light italic">
                     「技術は手段であり、目的は人々の生活をより豊かにすることです。
                     私たちAnfraは、最先端の技術を駆使しながらも、常に人間らしい温かさを大切にし、
                     お客様との信頼関係を築いてまいります。

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Code, Smartphone, Database, HeadphonesIcon, ChefHat, Quote, Play } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
-import TypingText from '../components/TypingText';
 import { Helmet } from 'react-helmet-async';
 
 const Home: React.FC = () => {
@@ -102,10 +101,8 @@ const Home: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.8 }}
               >
-                <span className="block text-gray-900 dark:text-white">Technology</span>
-                <span className="block text-gray-600 dark:text-gray-400 text-5xl md:text-7xl">
-                  <TypingText text="meets Innovation" delay={2000} speed={80} />
-                </span>
+                <span className="block text-gray-900 notranslate" translate="no">Technology</span>
+                <span className="block text-gray-600 text-2xl md:text-7xl notranslate whitespace-normal" translate="no">meets Innovation</span>
               </motion.h1>
               
               <motion.p 
@@ -129,10 +126,10 @@ const Home: React.FC = () => {
                 >
                   <Link
                     to="/work"
-                    className="group inline-flex items-center space-x-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300"
+                    className="group inline-flex items-center space-x-3 bg-gray-900 text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-all duration-300"
                   >
                     <Play className="h-5 w-5" />
-                    <span>View Our Work</span>
+                    <span className="notranslate" translate="no">View Our Work</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
@@ -143,9 +140,9 @@ const Home: React.FC = () => {
                 >
                   <Link
                     to="/contact"
-                    className="inline-flex items-center space-x-3 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white px-8 py-4 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300"
+                    className="inline-flex items-center space-x-3 border border-gray-300 text-gray-900 px-8 py-4 rounded-full font-medium hover:bg-gray-50 transition-all duration-300"
                   >
-                    <span>Get In Touch</span>
+                    <span className="notranslate" translate="no">Get In Touch</span>
                   </Link>
                 </motion.div>
               </motion.div>
@@ -162,7 +159,7 @@ const Home: React.FC = () => {
               transition={{ duration: 1 }}
               className="text-center mb-20"
             >
-              <h2 className="text-5xl md:text-6xl font-light mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-5xl md:text-6xl font-light mb-6 text-gray-900 notranslate" translate="no">
                 Our Services
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-light">
@@ -204,7 +201,7 @@ const Home: React.FC = () => {
         {/* Stats Section */}
         <ScrollSection className="py-16">
           <div className="container mx-auto px-6">
-            <h2 className="text-5xl md:text-6xl font-light mb-6 text-gray-900 dark:text-white text-center">
+            <h2 className="text-5xl md:text-6xl font-light mb-6 text-gray-900 notranslate text-center" translate="no">
               Achievements
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 font-light text-center mb-10">

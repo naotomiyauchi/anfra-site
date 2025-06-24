@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Users, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock, MessageSquare } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';
@@ -16,7 +16,6 @@ const Contact: React.FC = () => {
     message: '',
   });
   
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -32,7 +31,7 @@ const Contact: React.FC = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       title: 'Email',
-      value: 'info@anfra.co.jp',
+      value: 'n_miyauchi.001@anfr-in.com',
       description: '24時間受付',
     },
     {
@@ -72,7 +71,6 @@ const Contact: React.FC = () => {
       newErrors.message = 'メッセージは10文字以上で入力してください';
     }
 
-    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
@@ -82,7 +80,6 @@ const Contact: React.FC = () => {
       return;
     }
     setIsSubmitting(true);
-    setErrors({});
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -106,12 +103,9 @@ const Contact: React.FC = () => {
           category: '',
           message: '',
         });
-      } else {
-        const data = await res.json();
-        setErrors({ message: data.error || '送信に失敗しました' });
       }
-    } catch (error) {
-      setErrors({ message: '送信に失敗しました' });
+    } catch {
+      console.error('送信に失敗しました');
     } finally {
       setIsSubmitting(false);
     }
@@ -123,13 +117,6 @@ const Contact: React.FC = () => {
       ...prev,
       [name]: value
     }));
-    
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
   };
 
   if (isSubmitted) {
@@ -318,15 +305,9 @@ const Contact: React.FC = () => {
                               name="name"
                               value={formData.name}
                               onChange={handleInputChange}
-                              className={`form-input ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
+                              className="form-input"
                               placeholder="山田太郎"
                             />
-                            {errors.name && (
-                              <div className="mt-1 flex items-center space-x-1 text-red-500 text-sm">
-                                <AlertCircle className="h-4 w-4" />
-                                <span>{errors.name}</span>
-                              </div>
-                            )}
                           </div>
                         </div>
 
@@ -341,15 +322,9 @@ const Contact: React.FC = () => {
                               name="email"
                               value={formData.email}
                               onChange={handleInputChange}
-                              className={`form-input ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
+                              className="form-input"
                               placeholder="example@example.com"
                             />
-                            {errors.email && (
-                              <div className="mt-1 flex items-center space-x-1 text-red-500 text-sm">
-                                <AlertCircle className="h-4 w-4" />
-                                <span>{errors.email}</span>
-                              </div>
-                            )}
                           </div>
 
                           <div>
@@ -377,7 +352,7 @@ const Contact: React.FC = () => {
                             name="category"
                             value={formData.category}
                             onChange={handleInputChange}
-                            className={`form-select ${errors.category ? 'border-red-500 focus:ring-red-500' : ''}`}
+                            className="form-select"
                           >
                             <option value="">選択してください</option>
                             {categories.map((category) => (
@@ -386,12 +361,6 @@ const Contact: React.FC = () => {
                               </option>
                             ))}
                           </select>
-                          {errors.category && (
-                            <div className="mt-1 flex items-center space-x-1 text-red-500 text-sm">
-                              <AlertCircle className="h-4 w-4" />
-                              <span>{errors.category}</span>
-                            </div>
-                          )}
                         </div>
 
                         <div>
@@ -404,15 +373,9 @@ const Contact: React.FC = () => {
                             rows={6}
                             value={formData.message}
                             onChange={handleInputChange}
-                            className={`form-textarea ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
+                            className="form-textarea"
                             placeholder="プロジェクトの詳細やご要望をお聞かせください..."
                           />
-                          {errors.message && (
-                            <div className="mt-1 flex items-center space-x-1 text-red-500 text-sm">
-                              <AlertCircle className="h-4 w-4" />
-                              <span>{errors.message}</span>
-                            </div>
-                          )}
                         </div>
 
                         <div className="text-center">
@@ -465,7 +428,7 @@ const Contact: React.FC = () => {
             <div className="max-w-4xl mx-auto space-y-6">
               {[
                 {
-                  question: 'プロジェクトの見積もりはどのくらいの期間で出していただけますか？',
+                  question: 'プロジェクトの見積もりはどのくらいの期間で出せますか？',
                   answer: 'プロジェクトの規模にもよりますが、基本的には1週間以内に詳細な見積もりをご提示いたします。緊急の場合は48時間以内での対応も可能です。',
                 },
                 {

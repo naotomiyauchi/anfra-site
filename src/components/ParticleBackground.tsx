@@ -111,7 +111,7 @@ const ParticleBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60 dark:opacity-30"
+      className="fixed inset-0 pointer-events-none z-0 opacity-60"
       style={{ background: 'transparent' }}
     />
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Database, Globe, Play } from 'lucide-react';
+import { Code, Database, Globe, Play } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';
@@ -278,6 +278,7 @@ const Work: React.FC = () => {
                         ))}
                       </div>
                       
+                      {/*
                       <motion.button 
                         className="flex items-center space-x-2 text-gray-900 dark:text-white font-medium group-hover:translate-x-2 transition-transform duration-300"
                         whileHover={{ x: 8 }}
@@ -285,6 +286,7 @@ const Work: React.FC = () => {
                         <span className="notranslate" translate="no">View Project</span>
                         <ArrowRight className="h-4 w-4" />
                       </motion.button>
+                      */}
                     </div>
                   </div>
                 </MinimalCard>

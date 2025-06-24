@@ -302,10 +302,10 @@ const ModernBackground: React.FC = () => {
           }}
         >
           <div 
-            className="w-4 h-4 rounded-full opacity-30"
+            className="w-4 h-4 rounded-full opacity-100"
             style={{
               background: '#60a5fa',
-              boxShadow: '0 0 20px #60a5fa',
+              boxShadow: '0 0 60px 20px #3b82f6cc, 0 0 30px 10px #60a5fa',
             }}
           />
         </motion.div>

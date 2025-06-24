@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Zap, Award, ArrowRight } from 'lucide-react';
+import { Users, Zap, Award } from 'lucide-react';
 import ScrollSection from '../components/ScrollSection';
 import MinimalCard from '../components/MinimalCard';
 import TypingText from '../components/TypingText';
@@ -370,7 +370,9 @@ const About: React.FC = () => {
           </div>
         </ScrollSection>
 
+        
         {/* CTA Section */}
+        {/*
         <ScrollSection className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-6 text-center">
             <motion.div
@@ -397,6 +399,7 @@ const About: React.FC = () => {
             </motion.div>
           </div>
         </ScrollSection>
+        */}
       </div>
     </>
   );
